@@ -1,0 +1,26 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Perl debug app" type="#PerlRemoteDebuggingConfigurationType" factoryName="Perl Remote Debugging" show_console_on_std_err="false" show_console_on_std_out="false">
+    <option name="allowRunningInParallel" value="false" />
+    <option name="compileTimeBreakpointsEnabled" value="true" />
+    <option name="nonInteractiveModeEnabled" value="true" />
+    <option name="projectPathOnTarget" />
+    <option name="reconnect" value="true" />
+    <option name="selectedOptions">
+      <list />
+    </option>
+    <option name="debugHost" value="0.0.0.0" />
+    <option name="debugPort" value="40000" />
+    <option name="remoteProjectRoot" value="/opt/app" />
+    <option name="localProjectRoot" value="$PROJECT_DIR$" />
+    <option name="scriptCharset" value="utf8" />
+    <option name="perlRole" value="client" />
+    <option name="startMode" value="BREAKPOINT" />
+    <option name="isNonInteractiveModeEnabled" value="true" />
+    <option name="isCompileTimeBreakpointsEnabled" value="true" />
+    <option name="initCode" value="" />
+    <auto-reconnect>true</auto-reconnect>
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="docker restart app" run_configuration_type="ShConfigurationType" />
+    </method>
+  </configuration>
+</component>

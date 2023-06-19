@@ -1,0 +1,30 @@
+version: "3.9"
+
+name: app
+services:
+  app:
+    build: .
+    command: [ "perl", "-d:Camelcadedb", "/opt/app/docker-app/app/app.pl" ]
+    # пример с plack
+    #    command: [ "plackup", "-p", "3000", "-M","Devel::Camelcadedb" , "/opt/app/docker-app/app/app-plack.pl"]
+    volumes:
+      - ..:/opt/app
+    ports:
+      - "9000:3000"
+    environment:
+      PERL5LIB: /opt/app/lib
+      PERL5_DEBUG_AUTOSTART: ${DEBUG-0}
+      PERL5_DEBUG_ROLE: client
+      PERL5_DEBUG_HOST: host.docker.internal
+      PERL5_DEBUG_PORT: 40000
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_PROXY_PASS=http://app:3000
+    depends_on:
+      - app

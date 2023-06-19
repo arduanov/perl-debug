@@ -1,0 +1,7 @@
+server {
+    listen 0.0.0.0:80;
+
+    location / {
+        proxy_pass ${NGINX_PROXY_PASS};
+    }
+}

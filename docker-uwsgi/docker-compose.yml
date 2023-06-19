@@ -1,0 +1,28 @@
+version: "3.9"
+
+name: uwsgi
+services:
+  app:
+    build: .
+    command: [ "uwsgi", "/uwsgi/uwsgi.ini" ]
+    volumes:
+      - ./uwsgi:/uwsgi
+      - ..:/opt/app
+    ports:
+      - "9000:3000"
+    working_dir: /app
+    environment:
+      PERL5LIB: /opt/app/lib
+      PERL5_DEBUG_HOST: "host.docker.internal"
+      PERL5_DEBUG_PORT: 40000
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_UWSGI_PASS=app:3000
+    depends_on:
+      - app

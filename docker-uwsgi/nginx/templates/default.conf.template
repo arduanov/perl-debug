@@ -1,0 +1,9 @@
+server {
+    listen 0.0.0.0:80;
+
+    location / {
+		include uwsgi_params;
+		uwsgi_modifier1 5;
+        uwsgi_pass ${NGINX_UWSGI_PASS};
+    }
+}
